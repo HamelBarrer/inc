@@ -1,0 +1,32 @@
+{% extends 'users/base_login.html' %}
+{% block content %}
+    <div class="mx-auto d-table h-100 col-sm-10 col-md-8 col-lg-6">
+        <div class="d-table-cell align-middle">
+            <div class="text-center mt-4">
+                <h2>Bienvenido al sistema web</h2>
+                <p>Ingresa los datos para crear su cuenta</p>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="m-sm-4">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {% for field in form %}
+                                    {{ field.label_tag}}
+                                    {{ field }}
+                                {% endfor %}
+                            </div>
+                            <small>
+                                <a href="{% url 'users:login' %}">Cancelar</a>
+                            </small>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-lg btn-primary">Crear Cuenta</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
